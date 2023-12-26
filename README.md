@@ -7,7 +7,7 @@ This is a repository for the [Three.js Journey](https://threejs-journey.com/) co
 -   ✅ 01 - Introduction 🎉
 -   ✅ 02 - What is WebGL and why use Three.js 🎉
 -   ✅ 03 - [First Three.js Project 🎉](lessons/03-first-threejs-project)
--   ➖ 04 - Transforming Objects
+-   ✅ 04 - [Transforming Objects 🎉](lessons/04-transforming-objects)
 -   ➖ 05 - Animations
 -   ➖ 06 - Cameras
 -   ➖ 07 - Fullscreen and Resizing
