@@ -41,7 +41,6 @@ const tick = () => {
     // Time
     const currentTime = Date.now();
     const deltaTime = currentTime - time;
-    console.log(deltaTime);
     time = currentTime;
 
     // Update objects
