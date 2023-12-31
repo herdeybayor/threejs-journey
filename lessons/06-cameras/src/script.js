@@ -52,9 +52,6 @@ renderer.setSize(sizes.width, sizes.height);
 
 // Controls
 const controls = new OrbitControls(camera, canvas);
-
-scene.add(controls.target);
-
 controls.enableDamping = true;
 
 // Animate
