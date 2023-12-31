@@ -10,7 +10,7 @@ This is a repository for the [Three.js Journey](https://threejs-journey.com/) co
 -   ✅ 04 - [Transforming Objects 🎉](lessons/04-transforming-objects)
 -   ✅ 05 - Animations
 -   ✅ 06 - Cameras
--   ➖ 07 - Fullscreen and Resizing
+-   ✅ 07 - Fullscreen and Resizing
 -   ➖ 08 - Geometries
 -   ➖ 09 - Debug UI
 -   ➖ 10 - Textures
