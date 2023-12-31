@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 /**
  * Base
@@ -36,18 +37,25 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setSize(sizes.width, sizes.height);
 
-// Cursor
-const cursor = {
-    x: 0,
-    y: 0,
-};
+// // Cursor
+// const cursor = {
+//     x: 0,
+//     y: 0,
+// };
 
-window.addEventListener("mousemove", (event) => {
-    cursor.x = event.clientX / sizes.width - 0.5;
-    cursor.y = -(event.clientY / sizes.height - 0.5);
+// window.addEventListener("mousemove", (event) => {
+//     cursor.x = event.clientX / sizes.width - 0.5;
+//     cursor.y = -(event.clientY / sizes.height - 0.5);
 
-    // console.log(cursor.x, cursor.y);
-});
+//     // console.log(cursor.x, cursor.y);
+// });
+
+// Controls
+const controls = new OrbitControls(camera, canvas);
+
+scene.add(controls.target);
+
+controls.enableDamping = true;
 
 // Animate
 const clock = new THREE.Clock();
@@ -58,11 +66,14 @@ const tick = () => {
     // Update objects
     mesh.rotation.y = elapsedTime;
 
+    // Update controls
+    controls.update();
+
     // Update camera
-    camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3;
-    camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3;
-    camera.position.y = cursor.y * 5;
-    camera.lookAt(mesh.position);
+    // camera.position.x = Math.sin(cursor.x * Math.PI * 2) * 3;
+    // camera.position.z = Math.cos(cursor.x * Math.PI * 2) * 3;
+    // camera.position.y = cursor.y * 5;
+    // camera.lookAt(mesh.position);
 
     // Render
     renderer.render(scene, camera);
