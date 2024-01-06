@@ -3,6 +3,19 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import gsap from "gsap";
 import GUI from "lil-gui";
 
+// Debug
+const gui = new GUI();
+const debugObject = {};
+debugObject.color = "#3a6ea6";
+debugObject.subdivision = 2;
+
+debugObject.spin = () => {
+    gsap.to(mesh.rotation, { duration: 1, y: mesh.rotation.y + Math.PI * 2 });
+};
+debugObject.reset = () => {
+    gsap.to(mesh.rotation, { duration: mesh.rotation.y / (Math.PI * 2), y: 0 });
+};
+
 /**
  * Base
  */
@@ -15,10 +28,24 @@ const scene = new THREE.Scene();
 /**
  * Object
  */
-const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2);
-const material = new THREE.MeshBasicMaterial({ color: "#ff0000" });
+const geometry = new THREE.BoxGeometry(1, 1, 1, debugObject.subdivision, debugObject.subdivision, debugObject.subdivision);
+const material = new THREE.MeshBasicMaterial({ color: debugObject.color, wireframe: true });
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
+
+gui.add(mesh.position, "y", -3, 3, 0.01);
+gui.add(mesh.position, "x", -3, 3, 0.01);
+gui.add(mesh.position, "z", -3, 3, 0.01);
+gui.add(debugObject, "subdivision", 1, 10, 1).onFinishChange(() => {
+    mesh.geometry.dispose();
+    mesh.geometry = new THREE.BoxGeometry(1, 1, 1, debugObject.subdivision, debugObject.subdivision, debugObject.subdivision);
+});
+
+gui.add(mesh, "visible");
+gui.add(material, "wireframe");
+gui.addColor(material, "color");
+gui.add(debugObject, "spin");
+gui.add(debugObject, "reset");
 
 /**
  * Sizes
