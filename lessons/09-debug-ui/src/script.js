@@ -4,9 +4,13 @@ import gsap from "gsap";
 import GUI from "lil-gui";
 
 // Debug
-const gui = new GUI();
+const gui = new GUI({
+    width: 300,
+    title: "Debug",
+    closeFolders: false,
+});
 const cubeTweaks = gui.addFolder("Cube");
-cubeTweaks.close();
+// cubeTweaks.close();
 
 const debugObject = {};
 debugObject.color = "#3a6ea6";
@@ -18,6 +22,18 @@ debugObject.spin = () => {
 debugObject.reset = () => {
     gsap.to(mesh.rotation, { duration: mesh.rotation.y / (Math.PI * 2), y: 0 });
 };
+
+window.addEventListener("keydown", (e) => {
+    if (e.key === "s") {
+        debugObject.spin();
+    }
+    if (e.key === "r") {
+        debugObject.reset();
+    }
+    if (e.key === "h") {
+        gui.show(gui._hidden);
+    }
+});
 
 /**
  * Base
