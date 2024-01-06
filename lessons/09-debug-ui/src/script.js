@@ -6,6 +6,8 @@ import GUI from "lil-gui";
 // Debug
 const gui = new GUI();
 const cubeTweaks = gui.addFolder("Cube");
+cubeTweaks.close();
+
 const debugObject = {};
 debugObject.color = "#3a6ea6";
 debugObject.subdivision = 2;
