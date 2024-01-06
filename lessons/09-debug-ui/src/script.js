@@ -5,6 +5,7 @@ import GUI from "lil-gui";
 
 // Debug
 const gui = new GUI();
+const cubeTweaks = gui.addFolder("Cube");
 const debugObject = {};
 debugObject.color = "#3a6ea6";
 debugObject.subdivision = 2;
@@ -33,19 +34,19 @@ const material = new THREE.MeshBasicMaterial({ color: debugObject.color, wirefra
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
-gui.add(mesh.position, "y", -3, 3, 0.01);
-gui.add(mesh.position, "x", -3, 3, 0.01);
-gui.add(mesh.position, "z", -3, 3, 0.01);
-gui.add(debugObject, "subdivision", 1, 10, 1).onFinishChange(() => {
+cubeTweaks.add(mesh.position, "y", -3, 3, 0.01);
+cubeTweaks.add(mesh.position, "x", -3, 3, 0.01);
+cubeTweaks.add(mesh.position, "z", -3, 3, 0.01);
+cubeTweaks.add(debugObject, "subdivision", 1, 10, 1).onFinishChange(() => {
     mesh.geometry.dispose();
     mesh.geometry = new THREE.BoxGeometry(1, 1, 1, debugObject.subdivision, debugObject.subdivision, debugObject.subdivision);
 });
 
-gui.add(mesh, "visible");
-gui.add(material, "wireframe");
-gui.addColor(material, "color");
-gui.add(debugObject, "spin");
-gui.add(debugObject, "reset");
+cubeTweaks.add(mesh, "visible");
+cubeTweaks.add(material, "wireframe");
+cubeTweaks.addColor(material, "color");
+cubeTweaks.add(debugObject, "spin");
+cubeTweaks.add(debugObject, "reset");
 
 /**
  * Sizes
