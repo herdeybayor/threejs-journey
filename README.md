@@ -12,7 +12,7 @@ This is a repository for the [Three.js Journey](https://threejs-journey.com/) co
 -   ✅ 06 - Cameras
 -   ✅ 07 - Fullscreen and Resizing
 -   ✅ 08 - Geometries
--   ➖ 09 - Debug UI
+-   ✅ 09 - Debug UI
 -   ➖ 10 - Textures
 -   ➖ 11 - Materials
 -   ➖ 12 - 3D Text
