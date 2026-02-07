@@ -11,7 +11,7 @@ const scene = new THREE.Scene();
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshBasicMaterial({
     color: 0xff0000,
-    wireframe: true,
+    // wireframe: true,
 });
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
@@ -32,13 +32,16 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
 });
 renderer.setSize(sizes.width, sizes.height);
-renderer.render(scene, camera);
 
-// Clock
+// Clock 
 // const clock = new THREE.Clock();
 
-gsap.to(mesh.position, { duration: 1, delay: 1, x: 2 });
-gsap.to(mesh.position, { duration: 1, delay: 2, x: 0 });
+// gsap.to(mesh.position, { duration: 1, delay: 1, x: 2 });
+// gsap.to(mesh.position, { duration: 1, delay: 2, x: 0 });
+
+// Infinite animation
+gsap.to(mesh.position, { duration: 1, delay: 1, x: 2, repeat: -1, yoyo: true });
+gsap.to(mesh.position, { duration: 1, delay: 2, x: 0, repeat: -1, yoyo: true });
 
 // Animation
 const tick = () => {
@@ -51,6 +54,9 @@ const tick = () => {
     // mesh.rotation.z = elapsedTime;
 
     // Update camera
+    // camera.position.y = Math.sin(elapsedTime);
+    // camera.position.x = Math.cos(elapsedTime);
+    // camera.lookAt(mesh.position);
 
     // Render
     renderer.render(scene, camera);
